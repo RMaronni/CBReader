@@ -3,14 +3,11 @@ from progress import progress
 import time
 from PIL import Image
 from PIL import ImageTk
-import tkinter as tk
+import tkinter as Tk
 from enum import Enum
 
 
 file = "C:\\Temp\\Temp.cbz"
-
-progress_file = "C:\\Temp\\progress.json"
-progress_dict = None
 
 
 ORIGINAL   = 1
@@ -35,6 +32,7 @@ def previous(event):
 def quit(event):
     print("Quit")
     prog.save(c.get_md5(), c.get_current_index())
+    c.close()
     root.destroy()
 
 
@@ -123,10 +121,10 @@ def get_size(img):
 img_size = ORIGINAL
 
 
-root = tk.Tk()
-panel = tk.Label(root)
-root.bind("<Right>", next)
-root.bind("<Left>", previous)
+root = Tk.Tk()
+panel = Tk.Label(root)
+root.bind("<Next>", next)
+root.bind("<Prior>", previous)
 root.bind("<Escape>", quit)
 root.bind("1", set_size_original)
 root.bind("2", set_size_fit_width)
@@ -158,7 +156,7 @@ update_image(img_path)
 
 
 
-
+root.attributes("-fullscreen", True)
 root.mainloop()
 
 
