@@ -1,7 +1,7 @@
 import json
 import os
 
-DATA_PROGRESS_FILE = "C:\\Temp\\progress.json"
+DATA_PROGRESS_FILE = os.path.dirname(os.path.realpath(__file__)) + "\\progress.json"
 
 class progress:
     
