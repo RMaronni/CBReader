@@ -7,12 +7,12 @@ class cbr(cb):
 
     def load_file(self):
 
-        if not os.path.exists(extract_folder): os.mkdir(extract_folder)
+        if not os.path.exists(self.extract_folder): os.mkdir(self.extract_folder)
         
         with RarFile(self.file_path, 'r') as cbr:
-            cbr.extractall(extract_folder)
+            cbr.extractall(self.extract_folder)
 
-        self.img_list = os.listdir(extract_folder)
+        self.img_list = os.listdir(self.extract_folder)
         self.img_list.sort()
 
         self.index_first = 0
